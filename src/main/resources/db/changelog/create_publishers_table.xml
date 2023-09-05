@@ -1,0 +1,38 @@
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <!-- Create the publishers table -->
+    <changeSet id="1" author="maha">
+        <createTable tableName="publishers">
+
+            <column name="publisher_id" type="int" autoIncrement="true" startWith="1000" incrementBy="1" >
+                <constraints primaryKey="true"  />
+            </column>
+            <column name="publisher_name" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="publisher_city" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="date">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Insert data into the publishers table -->
+    <changeSet id="2" author="maha">
+        <sql>
+            INSERT INTO publishers (publisher_name, publisher_city, created_at)
+            values
+            ('New York Review Books','new york','2020-09-04'),
+            ('Beacon Press','USA','2019-07-19'),
+            ('Abrams Books','australiya','2023-07-06'),
+            ('Grove Press','visakhapatnam','2017-06-03'),
+            ('Pushkin Press','landon','2022-06-16')
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
