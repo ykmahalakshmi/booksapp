@@ -2,7 +2,6 @@ package com.example.booksapp1.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.apache.catalina.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.Set;
 
 @Entity
     @Table(name = "books")
-    public class Books {
+    public class Book {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int book_id;
@@ -24,11 +23,11 @@ import java.util.Set;
         @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id", updatable = false, insertable = false)
     @JsonIgnore
-    private Publishers publishers;
+    private Publisher publishers;
 
         @OneToMany(mappedBy = "books")
         @JsonIgnore
-       private List<Reviews> reviews=new ArrayList<Reviews>();
+       private List<Review> reviews=new ArrayList<Review>();
 
     @ManyToMany
     @JoinTable(
@@ -36,7 +35,7 @@ import java.util.Set;
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
    @JsonIgnore
-    Set<Users> users;
+    Set<User> users;
 
     public int getBook_id() {
         return book_id;
@@ -86,27 +85,27 @@ import java.util.Set;
         this.created_at = created_at;
     }
 
-    public Publishers getPublishers() {
+    public Publisher getPublishers() {
         return publishers;
     }
 
-    public void setPublishers(Publishers publishers) {
+    public void setPublishers(Publisher publishers) {
         this.publishers = publishers;
     }
 
-    public List<Reviews> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<Reviews> reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
 
-    public Set<Users> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<Users> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 }

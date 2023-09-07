@@ -1,18 +1,18 @@
 package com.example.booksapp1.services;
 
-import com.example.booksapp1.entities.Publishers;
-import com.example.booksapp1.entities.Users;
+import com.example.booksapp1.entities.Publisher;
+import com.example.booksapp1.exception.UserException;
 
 import java.util.List;
 
 public interface PublisherService {
 
 
-    List<Publishers> getPublishers();
-    Publishers addPublisher(Publishers publishers);
+    List<Publisher> getPublishers() throws UserException;
+    Publisher addPublisher(Publisher publishers);
 
-    Publishers updatePublishers(int publisher_id, String publisher_name );
+    Publisher updatePublisher(int publisher_id, String publisher_name ) throws UserException;
 
-    void rempovePublisher(int publisher_id);
+    void rempovePublisher(int publisher_id) throws UserException;
 }
 

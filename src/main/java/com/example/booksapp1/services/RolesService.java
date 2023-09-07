@@ -1,16 +1,18 @@
 package com.example.booksapp1.services;
 
-import com.example.booksapp1.entities.Roles;
+import com.example.booksapp1.Enum.RoleName;
+import com.example.booksapp1.entities.Role;
+import com.example.booksapp1.exception.UserException;
 
 import java.util.List;
 
 public interface RolesService {
 
-    List<Roles> getRoles();
-    Roles addRoles(Roles roles);
+    List<Role> getRoles() throws UserException;
+    Role addRole(Role roles) throws UserException;
 
-    Roles updateRoles(int role_id, String rolename );
+    Role updateRole(int role_id, RoleName rolename ) throws UserException;
 
-    void rempoveRoles(int role_id);
+    void rempoveRole(int role_id) throws UserException;
 }
 

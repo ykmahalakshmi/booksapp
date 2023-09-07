@@ -1,19 +1,20 @@
 package com.example.booksapp1.services;
 
-import com.example.booksapp1.entities.Roles;
-import com.example.booksapp1.entities.Users;
+import com.example.booksapp1.entities.User;
+import com.example.booksapp1.exception.UserException;
 
 import java.util.List;
 
 public interface UsersService {
 
 
-    List<Users> getUsers();
-    Users addUsers(Users users);
+    List<User> getUsers() throws UserException;
+    User addUser(User users);
 
-    Users updateUsers(int user_id, String username );
+    User updateUser(int user_id, String username ) throws UserException;
 
-    void rempoveUsers(int user_id);
+    void rempoveUser(int user_id) throws UserException;
+
 }
 
 

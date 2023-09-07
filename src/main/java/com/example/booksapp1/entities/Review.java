@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
     @Entity
     @Table(name = "reviews")
-    public class Reviews {
+    public class Review {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int review_id;
@@ -18,12 +18,12 @@ import java.time.LocalDateTime;
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "book_id", updatable = false, insertable = false)
         @JsonIgnore
-        private Books books;
+        private Book books;
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "user_id", updatable = false, insertable = false)
         @JsonIgnore
-        private Users users;
+        private User users;
 
 
         public int getReview_id() {
@@ -74,19 +74,19 @@ import java.time.LocalDateTime;
             this.created_at = created_at;
         }
 
-        public Books getBooks() {
+        public Book getBooks() {
             return books;
         }
 
-        public void setBooks(Books books) {
+        public void setBooks(Book books) {
             this.books = books;
         }
 
-        public Users getUsers() {
+        public User getUsers() {
             return users;
         }
 
-        public void setUsers(Users users) {
+        public void setUsers(User users) {
             this.users = users;
         }
     }

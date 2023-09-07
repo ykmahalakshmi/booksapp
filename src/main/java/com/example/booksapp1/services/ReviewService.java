@@ -1,20 +1,19 @@
 package com.example.booksapp1.services;
 
-import com.example.booksapp1.entities.Books;
-import com.example.booksapp1.entities.Reviews;
+import com.example.booksapp1.entities.Review;
+import com.example.booksapp1.exception.UserException;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface ReviewService {
 
 
-    List<Reviews> getReviews();
-    Reviews addReview(Reviews reviews);
+    List<Review> getReviews() throws UserException;
+    Review addReview(Review reviews);
 
-    Reviews updateReviews(int review_id, String comment );
+    Review updateReview(int review_id, String comment ) throws UserException;
 
-    void rempoveReviews(int review_id);
+    void rempoveReview(int review_id) throws UserException;
 
 
 

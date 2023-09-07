@@ -9,17 +9,17 @@ import java.util.List;
 
 @Entity
 @Table(name = "publishers")
-public class Publishers {
+public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int publisher_id;
-    private  String publisher_name;
-    private  String publisher_city;
+    private String publisher_name;
+    private String publisher_city;
 
     private LocalDateTime created_at;
     @OneToMany(mappedBy = "publishers")
     @JsonIgnore
-    private List<Books> books=new ArrayList<Books>();
+    private List<Book> books = new ArrayList<Book>();
 
     public int getPublisher_id() {
         return publisher_id;
@@ -53,11 +53,11 @@ public class Publishers {
         this.created_at = created_at;
     }
 
-    public List<Books> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Books> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 }

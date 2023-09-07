@@ -1,9 +1,8 @@
 package com.example.booksapp1.services;
 
-import com.example.booksapp1.entities.Books;
-import com.example.booksapp1.entities.Users;
+import com.example.booksapp1.entities.Book;
+import com.example.booksapp1.exception.UserException;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Stream;
@@ -11,14 +10,14 @@ import java.util.stream.Stream;
 public interface BooksService {
 
 
-    List<Books> getBooks();
-    Books addBooks(Books books);
+    List<Book> getBooks() throws UserException;
+    Book addBook(Book books);
 
-    Books updateBooks(int book_id, String title );
+    Book updateBook(int book_id, String title ) throws UserException;
 
-    void rempoveBooks(int book_id);
+    void rempoveBook(int book_id) throws UserException;
   //  List getbookdata() throws IOException;
-    Stream<String> getbookdata1(int bookid) throws IOException;
+    Stream<String> getbookdata(int bookid) throws IOException;
 }
 
 

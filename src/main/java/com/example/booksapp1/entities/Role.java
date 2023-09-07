@@ -1,4 +1,5 @@
 package com.example.booksapp1.entities;
+import com.example.booksapp1.Enum.RoleName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -6,14 +7,16 @@ import java.util.List;
 
     @Entity
     @Table(name = "roles")
-    public class Roles {
+    public class Role {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int role_id;
-        private String rolename;
+        @Column(name = "rolename")
+        @Enumerated(EnumType.STRING)
+        private RoleName rolename;
         @OneToMany(mappedBy = "roles")
         @JsonIgnore // ignore the property from serialization
-        private List<Users> users = new ArrayList<Users>();
+        private List<User> users = new ArrayList<User>();
 
         public int getRole_id() {
             return role_id;
@@ -23,19 +26,19 @@ import java.util.List;
             this.role_id = role_id;
         }
 
-        public String getRolename() {
+        public RoleName getRolename() {
             return rolename;
         }
 
-        public void setRolename(String rolename) {
+        public void setRolename(RoleName rolename) {
             this.rolename = rolename;
         }
 
-        public List<Users> getUsers() {
+        public List<User> getUsers() {
             return users;
         }
 
-        public void setUsers(List<Users> users) {
+        public void setUsers(List<User> users) {
             this.users = users;
         }
     }

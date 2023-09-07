@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
     @Table(name = "users")
-    public class Users {
+    public class User {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int user_id;
@@ -20,14 +20,14 @@ import java.util.Set;
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "role_id", updatable = false, insertable = false)
         @JsonIgnore
-        private Roles roles;
+        private Role roles;
     @OneToMany(mappedBy = "users")
     @JsonIgnore // ignore the property from serialization
-    private List<Reviews> reviews = new ArrayList<Reviews>();
+    private List<Review> reviews = new ArrayList<Review>();
 
     @ManyToMany(mappedBy = "users")
     @JsonIgnore
-    Set <Books> books;
+    Set <Book> books;
 
 
     public int getUser_id() {
@@ -70,27 +70,27 @@ import java.util.Set;
         this.created_at = created_at;
     }
 
-    public Roles getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRoles(Roles roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 
-    public List<Reviews> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<Reviews> reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
 
-    public Set<Books> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Books> books) {
+    public void setBooks(Set<Book> books) {
         this.books = books;
     }
 }

@@ -1,9 +1,7 @@
 package com.example.booksapp1.controllers;
 
-import com.example.booksapp1.entities.Books;
-import com.example.booksapp1.entities.Reviews;
-import com.example.booksapp1.entities.Roles;
-import com.example.booksapp1.repos.ReviewsRepo;
+import com.example.booksapp1.entities.Review;
+import com.example.booksapp1.exception.UserException;
 import com.example.booksapp1.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,35 +12,31 @@ import java.util.List;
 public class ReviewsControllers {
     @Autowired
 
-    private ReviewService reviewService ;
+    private ReviewService reviewService;
 
     @GetMapping("/getreviews")
-    public List<Reviews> get() {
+    public List<Review> get() throws UserException {
         return reviewService.getReviews();
     }
 
     @PostMapping("/addReview")
-    public Reviews addreview(@RequestBody Reviews reviews) {
+    public Review addreview(@RequestBody Review reviews) {
 
         return reviewService.addReview(reviews);
     }
 
 
-    @PutMapping("/updatereview/{review_id}/{comment}")
-    public Reviews updatereview(@PathVariable("review_id") int review_id, @PathVariable("comment") String comment) {
-        return reviewService.updateReviews(review_id, comment);
+    @PutMapping("/review/{review_id}/comment/{comment}")
+    public Review updatereview(@PathVariable("review_id") int review_id, @PathVariable("comment") String comment) throws UserException {
+        return reviewService.updateReview(review_id, comment);
     }
 
     @DeleteMapping("/deletereview/{review_id}")
-    public void removereview(@PathVariable("review_id") int review_id) {
-        reviewService.rempoveReviews(review_id);
+    public void removereview(@PathVariable("review_id") int review_id) throws UserException {
+        reviewService.rempoveReview(review_id);
     }
 }
 
 
-
-//    @GetMapping("/reviewss")
-//    public List<Reviews> getReviews(){
-//        return reviewsRepo.findall();
 
 
