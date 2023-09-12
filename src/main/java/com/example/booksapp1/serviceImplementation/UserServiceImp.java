@@ -5,13 +5,17 @@ import com.example.booksapp1.exception.UserException;
 import com.example.booksapp1.repos.UserRepo;
 import com.example.booksapp1.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImp implements UsersService {
+public class UserServiceImp implements UsersService
+{
     @Autowired
     private UserRepo usersRepo;
 
@@ -49,5 +53,15 @@ public class UserServiceImp implements UsersService {
             throw new UserException("user is not there");
         usersRepo.deleteById(user_id);
 
+    }
+
+    @Override
+    public Page<User> getUserpage(int pagenum, int limit) {
+        return usersRepo.findAll(PageRequest. of(pagenum,limit));
+    }
+
+    @Override
+    public Page<User> getUserpagebysort(int pagenum, int limit, String username) {
+        return usersRepo.findAll(PageRequest.of(pagenum,limit, Sort.by(username).descending()));
     }
 }

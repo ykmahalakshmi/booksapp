@@ -14,25 +14,25 @@ public class RolesController {
     @Autowired
     private RolesService rolesService;
 
-    @GetMapping("/getroles")
+    @GetMapping("/roles")
     public List<Role> get() throws UserException {
         return rolesService.getRoles();
     }
 
-    @PostMapping("/addRole")
+    @PostMapping("/role")
     public Role addrow(@RequestBody Role roles) throws UserException {
 
         return rolesService.addRole(roles);
     }
 
 
-    @PutMapping("/role/{role_id}/rolename/{rolename}")
-    public Role updaterole(@PathVariable("role_id") int role_id, @PathVariable("rolename") RoleName rolename) throws UserException {
+    @PutMapping("/role/{role-id}/rolename/{role-name}")
+    public Role updaterole(@PathVariable("role-id") int role_id, @PathVariable("role-name") RoleName rolename) throws UserException {
         return rolesService.updateRole(role_id, rolename);
     }
 
-    @DeleteMapping("/deleterow/{role_id}")
-    public void removerole(@PathVariable("role_id") int role_id) throws UserException {
+    @DeleteMapping("/role/{role-id}")
+    public void removerole(@PathVariable("role-id") int role_id) throws UserException {
         rolesService.rempoveRole(role_id);
     }
 }

@@ -15,26 +15,26 @@ public class PublishersControllers {
     private PublisherService publisherService;
 
 
-    @GetMapping("/getpublishers")
+    @GetMapping("/publishers")
     public List<Publisher> get() throws UserException {
 
         return publisherService.getPublishers();
     }
 
-    @PostMapping("/addPublisher")
+    @PostMapping("/publisher")
     public Publisher addrow(@RequestBody Publisher publishers) {
 
         return publisherService.addPublisher(publishers);
     }
 
 
-    @PutMapping("/publisher/{publisher_id}/publishername/{publisher_name}")
-    public Publisher updatepublisher(@PathVariable("publisher_id") int publisher_id, @PathVariable("publisher_name") String publisher_name) throws UserException {
+    @PutMapping("/publisher/{publisher-id}/publishername/{publisher-name}")
+    public Publisher updatepublisher(@PathVariable("publisher-id") int publisher_id, @PathVariable("publisher-name") String publisher_name) throws UserException {
         return publisherService.updatePublisher(publisher_id, publisher_name);
     }
 
-    @DeleteMapping("/deletePublisher/{publisher_id}")
-    public void removepublisher(@PathVariable("publisher_id") int publisher_id) throws UserException {
+    @DeleteMapping("/publisher/{publisher-id}")
+    public void removepublisher(@PathVariable("publisher-id") int publisher_id) throws UserException {
         publisherService.rempovePublisher(publisher_id);
     }
 }

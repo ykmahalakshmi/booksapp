@@ -2,6 +2,7 @@ package com.example.booksapp1.services;
 
 import com.example.booksapp1.entities.User;
 import com.example.booksapp1.exception.UserException;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -14,6 +15,11 @@ public interface UsersService {
     User updateUser(int user_id, String username ) throws UserException;
 
     void rempoveUser(int user_id) throws UserException;
+
+    Page<User> getUserpage(int pagenum, int limit);
+
+
+    Page<User> getUserpagebysort(int pagenum, int limit,String username);
 
 }
 

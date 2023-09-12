@@ -4,8 +4,10 @@ book_id int not null REFERENCES books(book_id) on delete CASCADE ON UPDATE CASCA
 user_id int not null REFERENCES users(user_id) on delete no ACTION ,
 rating int  not null CHECK (rating<=10),
 comment VARCHAR(100),
-created_at datetime not null
+created_at datetime not null,
+
 )
+
 insert into reviews VALUES
 (3000,2,5,'I really enjoyed this book! The characters were so well-developed','2021-09-09'),
 (3001,4,4,'The plot twists in this book were mind-blowing','2022-08-18'),

@@ -53,12 +53,6 @@ public class Publisher {
         this.created_at = created_at;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
 }
 

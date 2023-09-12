@@ -14,26 +14,26 @@ public class ReviewsControllers {
 
     private ReviewService reviewService;
 
-    @GetMapping("/getreviews")
+    @GetMapping("/reviews")
     public List<Review> get() throws UserException {
         return reviewService.getReviews();
     }
 
-    @PostMapping("/addReview")
+    @PostMapping("/review")
     public Review addreview(@RequestBody Review reviews) {
 
         return reviewService.addReview(reviews);
     }
 
 
-    @PutMapping("/review/{review_id}/comment/{comment}")
-    public Review updatereview(@PathVariable("review_id") int review_id, @PathVariable("comment") String comment) throws UserException {
+    @PutMapping("/review/{review-id}/comment/{comment}")
+    public Review updatereview(@PathVariable("review-id") int review_id, @PathVariable("comment") String comment) throws UserException {
         return reviewService.updateReview(review_id, comment);
     }
 
-    @DeleteMapping("/deletereview/{review_id}")
-    public void removereview(@PathVariable("review_id") int review_id) throws UserException {
-        reviewService.rempoveReview(review_id);
+    @DeleteMapping("/review/{review-id}")
+    public void removereview(@PathVariable("review-id") int id) throws UserException {
+        reviewService.rempoveReview(id);
     }
 }
 
