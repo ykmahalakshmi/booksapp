@@ -19,19 +19,19 @@ public class ReviewsControllers {
         return reviewService.getReviews();
     }
 
-    @PostMapping("/review")
+    @PostMapping("/reviews")
     public Review addreview(@RequestBody Review reviews) {
 
         return reviewService.addReview(reviews);
     }
 
 
-    @PutMapping("/review/{review-id}/comment/{comment}")
-    public Review updatereview(@PathVariable("review-id") int review_id, @PathVariable("comment") String comment) throws UserException {
-        return reviewService.updateReview(review_id, comment);
+    @PutMapping("/reviews/{review-id}/comment/{comment}")
+    public Review updatereview(@PathVariable("review-id") int reviewId, @PathVariable("comment") String comment) throws UserException {
+        return reviewService.updateReview(reviewId, comment);
     }
 
-    @DeleteMapping("/review/{review-id}")
+    @DeleteMapping("/reviews/{review-id}")
     public void removereview(@PathVariable("review-id") int id) throws UserException {
         reviewService.rempoveReview(id);
     }

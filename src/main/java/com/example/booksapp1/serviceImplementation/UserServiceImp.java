@@ -14,8 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImp implements UsersService
-{
+public class UserServiceImp implements UsersService {
     @Autowired
     private UserRepo usersRepo;
 
@@ -57,11 +56,11 @@ public class UserServiceImp implements UsersService
 
     @Override
     public Page<User> getUserpage(int pagenum, int limit) {
-        return usersRepo.findAll(PageRequest. of(pagenum,limit));
+        return usersRepo.findAll(PageRequest.of(pagenum, limit));
     }
 
     @Override
     public Page<User> getUserpagebysort(int pagenum, int limit, String username) {
-        return usersRepo.findAll(PageRequest.of(pagenum,limit, Sort.by(username).descending()));
+        return usersRepo.findAll(PageRequest.of(pagenum, limit, Sort.by(username).descending()));
     }
 }

@@ -20,31 +20,31 @@ public class UsersControllers {
         return usersService.getUsers();
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public User addusers(@RequestBody User users) {
 
         return usersService.addUser(users);
     }
 
 
-    @PutMapping("/user/{user-id}/username/{user-name}")
-    public User updateuser(@PathVariable("user-id") int id, @PathVariable("user-name") String username) throws UserException {
-        return usersService.updateUser(id, username);
+    @PutMapping("/users/{user-id}/username/{user-name}")
+    public User updateuser(@PathVariable("user-id") int id, @PathVariable("user-name") String userName) throws UserException {
+        return usersService.updateUser(id, userName);
     }
 
-    @DeleteMapping("/user/{user-id}")
-    public void removeuser(@PathVariable("user-id") int user_id) throws UserException {
-        usersService.rempoveUser(user_id);
+    @DeleteMapping("/users/{user-id}")
+    public void removeuser(@PathVariable("user-id") int userId) throws UserException {
+        usersService.rempoveUser(userId);
     }
 
 
-    @GetMapping("/users-page/{page-num}/{limit}")
+    @GetMapping("/users-page/pagenum/{page-num}/limit/{limit}")
     public Page<User> getg(@PathVariable("page-num")int num, @PathVariable("limit")int limit) throws UserException {
         return usersService.getUserpage(num,limit);
     }
 
 
-    @GetMapping("/users-page/{page-num}/{limit}/{username}")
+    @GetMapping("/users-page/pahenum/{page-num}/limit/{limit}/username/{username}")
     public Page<User> get1(@PathVariable("page-num")int num, @PathVariable("limit")int limit,@PathVariable("username")String name) throws UserException {
         return usersService.getUserpagebysort(num,limit,name);
     }

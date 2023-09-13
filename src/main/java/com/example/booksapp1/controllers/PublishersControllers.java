@@ -21,21 +21,21 @@ public class PublishersControllers {
         return publisherService.getPublishers();
     }
 
-    @PostMapping("/publisher")
+    @PostMapping("/publishers")
     public Publisher addrow(@RequestBody Publisher publishers) {
 
         return publisherService.addPublisher(publishers);
     }
 
 
-    @PutMapping("/publisher/{publisher-id}/publishername/{publisher-name}")
-    public Publisher updatepublisher(@PathVariable("publisher-id") int publisher_id, @PathVariable("publisher-name") String publisher_name) throws UserException {
-        return publisherService.updatePublisher(publisher_id, publisher_name);
+    @PutMapping("/publishers/{publisher-id}/publishername/{publisher-name}")
+    public Publisher updatepublisher(@PathVariable("publisher-id") int publisherId, @PathVariable("publisher-name") String publisherName) throws UserException {
+        return publisherService.updatePublisher(publisherId, publisherName);
     }
 
     @DeleteMapping("/publisher/{publisher-id}")
-    public void removepublisher(@PathVariable("publisher-id") int publisher_id) throws UserException {
-        publisherService.rempovePublisher(publisher_id);
+    public void removepublisher(@PathVariable("publisher-id") int publisherId) throws UserException {
+        publisherService.rempovePublisher(publisherId);
     }
 }
 

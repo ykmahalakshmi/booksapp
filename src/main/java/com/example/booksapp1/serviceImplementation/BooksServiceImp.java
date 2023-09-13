@@ -36,9 +36,9 @@ public class BooksServiceImp implements BooksService {
     }
 
     @Override
-    public Book updateBook(int book_id, String title) throws UserException {
+    public Book updateBook(int bookId, String title) throws UserException {
 
-        Optional<Book> book1 = booksRepo.findById(book_id);
+        Optional<Book> book1 = booksRepo.findById(bookId);
         if (book1.isEmpty())
             throw new UserException("bppk id not found");
 
@@ -48,19 +48,19 @@ public class BooksServiceImp implements BooksService {
     }
 
     @Override
-    public void rempoveBook(int book_id) throws UserException {
-        Optional<Book> books1 = booksRepo.findById(book_id);
+    public void rempoveBook(int bookId) throws UserException {
+        Optional<Book> books1 = booksRepo.findById(bookId);
         if (books1.isEmpty())
             throw new UserException("book id is not found");
 
-        booksRepo.deleteById(book_id);
+        booksRepo.deleteById(bookId);
     }
 
 
     @Override
     public Stream<String> getbookdata(int bookid) throws IOException {
         String s = booksRepo.getpath1(bookid);
-        System.out.println(s);
+        //System.out.println(s);
         FileReader fr = new FileReader(s);
 
         BufferedReader br = new BufferedReader(fr);

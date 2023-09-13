@@ -20,7 +20,7 @@ public class BooksControllers {
         return booksService.getBooks();
     }
 
-    @PostMapping("/book")
+    @PostMapping("/books")
     public Book addbook(@RequestBody Book books) {
 
         return booksService.addBook(books);
@@ -28,13 +28,13 @@ public class BooksControllers {
 
 
     @PutMapping("/books/{book-id}/title/{title}")
-    public Book updatebook(@PathVariable("book-id") int book_id, @PathVariable("title") String title) throws UserException {
-        return booksService.updateBook(book_id, title);
+    public Book updatebook(@PathVariable("book-id") int bookId, @PathVariable("title") String title) throws UserException {
+        return booksService.updateBook(bookId, title);
     }
 
-    @DeleteMapping("/book/{book-id}")
-    public void removebook(@PathVariable("book-id") int book_id) throws UserException {
-        booksService.rempoveBook(book_id);
+    @DeleteMapping("/books/{book-id}")
+    public void removebook(@PathVariable("book-id") int bookId) throws UserException {
+        booksService.rempoveBook(bookId);
     }
 
 
