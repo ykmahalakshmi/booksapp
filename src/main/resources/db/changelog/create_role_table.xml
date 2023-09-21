@@ -1,0 +1,31 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--  <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+<!--                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--                     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">-->
+
+<!--      &lt;!&ndash; Create the roles table &ndash;&gt;-->
+<!--      <changeSet id="95" author="maha">-->
+<!--          <createTable tableName="roles">-->
+<!--              <column name="role_id" type="int" autoIncrement="true">-->
+<!--                  <constraints primaryKey="true"/>-->
+<!--              </column>-->
+<!--              <column name="rolename" type="varchar(20)">-->
+<!--                  <constraints nullable="false" checkConstraint="rolename='generaluser' or rolename='author'"/>-->
+<!--              </column>-->
+<!--          </createTable>-->
+<!--      </changeSet>-->
+
+<!--      &lt;!&ndash; Insert data into the roles table &ndash;&gt;-->
+<!--      <changeSet id="96" author="maha">-->
+<!--          <insert tableName="roles">-->
+<!--              <column name="role_id" valueNumeric="100"/>-->
+<!--              <column name="rolename" value="generaluser"/>-->
+<!--          </insert>-->
+<!--          <insert tableName="roles">-->
+<!--              <column name="role_id" valueNumeric="101"/>-->
+<!--              <column name="rolename" value="author"/>-->
+<!--          </insert>-->
+<!--      </changeSet>-->
+
+<!--  </databaseChangeLog>-->

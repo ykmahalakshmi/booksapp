@@ -10,7 +10,7 @@ public interface UsersService {
 
 
     List<User> getUsers() throws UserException;
-    User addUser(User users);
+    User addUser(User users) throws UserException;
 
     User updateUser(int user_id, String username ) throws UserException;
 

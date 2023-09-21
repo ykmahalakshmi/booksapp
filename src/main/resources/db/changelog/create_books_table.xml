@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <!-- Create the books table -->
+    <changeSet id="10" author="maha">
+        <createTable tableName="books">
+            <column name="book_id" type="int" autoIncrement="true" startWith="2000" incrementBy="1">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="publisher_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="title" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filepath" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="11" author="maha">
+        <addForeignKeyConstraint baseTableName="books" baseColumnNames="publisher_id" constraintName="fk_publisher_id" referencedTableName="publishers"
+                                 referencedColumnNames="publisher_id" onDelete="CASCADE"/>
+
+
+    </changeSet>
+
+    <changeSet id="12" author="maha">
+        <addForeignKeyConstraint baseTableName="books" baseColumnNames="author_id" constraintName="fk_author_id" referencedTableName="users"
+                                 referencedColumnNames="user_id" onDelete="CASCADE"/>
+
+
+    </changeSet>
+
+    <!-- Insert sample data into the books table -->
+    <changeSet id="13" author="maha">
+        <insert tableName="books">
+            <column name="publisher_id" valueNumeric="3000"/>
+<!--            <column name="book_id" valueNumeric="3"/>-->
+            <column name="author_id" valueNumeric="1000"/>
+            <column name="title" value="Anne of Green Gables"/>
+            <column name="filepath" value="/home/developer/Documents/Maha/book1"/>
+            <column name="created_at" valueDate="2021-01-01 02:30:00"/>
+        </insert>
+        <insert tableName="books">
+            <column name="publisher_id" valueNumeric="3001"/>
+<!--            <column name="" valueNumeric="5"/>-->
+            <column name="author_id" valueNumeric="1001"/>
+            <column name="title" value="Wonder"/>
+            <column name="filepath" value="/home/developer/Documents/Maha/book2"/>
+            <column name="created_at" valueDate="2022-09-17 11:30:00"/>
+        </insert>
+        <insert tableName="books">
+            <column name="publisher_id" valueNumeric="3002"/>
+<!--            <column name="publisher_id" valueNumeric="9"/>-->
+            <column name="author_id" valueNumeric="1002"/>
+            <column name="title" value="The Fault in Our Stars"/>
+            <column name="filepath" value="/home/developer/Documents/Maha/book3"/>
+            <column name="created_at" valueDate="2023-07-17 12:40:00"/>
+        </insert>
+        <insert tableName="books">
+            <column name="publisher_id" valueNumeric="3003"/>
+<!--            <column name="publisher_id" valueNumeric="10"/>-->
+            <column name="author_id" valueNumeric="1003"/>
+            <column name="title" value="Number the Stars"/>
+            <column name="filepath" value="/home/developer/Documents/Maha/book4"/>
+            <column name="created_at" valueDate="2020-01-01 01:50:00"/>
+        </insert>
+        <insert tableName="books">
+            <column name="publisher_id" valueNumeric="3004"/>
+<!--            <column name="publisher_id" valueNumeric="12"/>-->
+            <column name="author_id" valueNumeric="1004"/>
+            <column name="title" value="Good Java Developer"/>
+            <column name="filepath" value="/home/developer/Documents/Maha/book5"/>
+            <column name="created_at" valueDate="2023-01-01 05:30:00"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

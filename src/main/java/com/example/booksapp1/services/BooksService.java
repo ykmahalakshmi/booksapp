@@ -18,6 +18,8 @@ public interface BooksService {
     void rempoveBook(int book_id) throws UserException;
   //  List getbookdata() throws IOException;
     Stream<String> getbookdata(int bookid) throws IOException;
+
+    Book updateFilePath(int book_id, String path ) throws UserException;
 }
 
 

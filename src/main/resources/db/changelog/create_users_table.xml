@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <!-- Create the users table -->
+    <changeSet id="1" author="maha">
+        <createTable tableName="users">
+            <column name="user_id" type="int" autoIncrement="true" startWith="1000">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="varchar(10)">
+                <constraints nullable="false"/>
+                <!--                    checkConstraint="phone_number ~ '^[6-9][0-9]{9}$'"-->
+
+            </column>
+
+
+            <!--            <column name="role_id" type="int">-->
+            <!--            <constraints nullable="false"/>-->
+
+            <!--            </column>-->
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="roles" type="varchar(40)"/>
+
+            <column name="password" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <!--            <changeSet id="2" author="maha">-->
+    <!--                <addForeignKeyConstraint baseTableName="users" baseColumnNames="role_id" constraintName="fk_role_id1" referencedTableName="roles"-->
+    <!--                                         referencedColumnNames="role_id" onDelete="CASCADE"/>-->
+    <!--            </changeSet>-->
+
+    <!-- Insert data into the users table -->
+    <changeSet id="7" author="maha">
+        <insert tableName="users">
+            <column name="username" value="vardhan"/>
+            <column name="phone_number" value="7799008254"/>
+            <!--            <column name="role_id" valueNumeric="101"/>-->
+            <column name="created_at" valueDate="2017-08-18 11:30:00"/>
+            <column name="roles" value="ROLE_AUTHOR"/>
+<!--            <column name="password" value="vardhan"/>-->
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="usha"/>
+            <column name="phone_number" value="9347498836"/>
+            <!--            <column name="role_id" valueNumeric="100"/>-->
+            <column name="created_at" valueDate="2020-09-19 08:30:00"/>
+            <column name="roles" value="ROLE_AUTHOR"/>
+<!--            <column name="password" value="usha"/>-->
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="ravi"/>
+            <column name="phone_number" value="9682651484"/>
+            <!--                   <column name="role_id" valueNumeric="100"/>-->
+            <column name="created_at" valueDate="2021-06-22 05:30:00"/>
+            <column name="roles" value="ROLE_AUTHOR"/>
+<!--            <column name="password" value="ravi"/>-->
+        </insert>
+
+        <insert tableName="users">
+            <column name="username" value="mark twain"/>
+            <column name="phone_number" value="9908804276"/>
+<!--            <column name="role_id" valueNumeric="101"/>-->
+            <column name="created_at" valueDate="2004-07-28 09:40:00"/>
+            <column name="roles" value="ROLE_AUTHOR"/>
+<!--            <column name="password" value="mark"/>-->
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="Leo Tolstoy"/>
+            <column name="phone_number" value="8176868975"/>
+<!--            <column name="role_id" valueNumeric="101"/>-->
+            <column name="created_at" valueDate="2016-04-16 02:50:00"/>
+            <column name="roles" value="ROLE_AUTHOR"/>
+<!--            <column name="password" value="leo"/>-->
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="niranjan"/>
+            <column name="phone_number" value="9879567432"/>
+<!--            <column name="role_id" valueNumeric="100"/>-->
+            <column name="created_at" valueDate="2018-09-02 11:50:00"/>
+            <column name="roles" value="ROLE_USER"/>
+<!--            <column name="password" value="niranjan"/>-->
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="praveen"/>
+            <column name="phone_number" value="8979659872"/>
+<!--            <column name="role_id" valueNumeric="100"/>-->
+            <column name="created_at" valueDate="2022-05-09 12:30:00"/>
+            <column name="roles" value="ROLE_USER"/>
+<!--            <column name="password" value="praveen"/>-->
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="William Shakespeare"/>
+            <column name="phone_number" value="9879589762"/>
+<!--            <column name="role_id" valueNumeric="101"/>-->
+            <column name="created_at" valueDate="2020-03-19 01:33:00"/>
+            <column name="roles" value="ROLE_USER"/>
+<!--            <column name="password" value="william"/>-->
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="Jane Austen"/>
+            <column name="phone_number" value="8099960688"/>
+<!--            <column name="role_id" valueNumeric="101"/>-->
+            <column name="created_at" valueDate="2009-06-26 04:30:00"/>
+            <column name="roles" value="ROLE_USER"/>
+<!--            <column name="password" value="jane"/>-->
+        </insert>
+
+        <insert tableName="users">
+            <column name="username" value="maha"/>
+            <column name="phone_number" value="9887659842"/>
+<!--            <column name="role_id" valueNumeric="100"/>-->
+            <column name="created_at" valueDate="2009-06-26 02:35:00"/>
+            <column name="roles" value="ROLE_USER"/>
+<!--            <column name="password" value="maha"/>-->
+
+        </insert>
+
+
+    </changeSet>
+
+</databaseChangeLog>

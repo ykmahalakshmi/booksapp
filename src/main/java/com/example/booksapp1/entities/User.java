@@ -1,34 +1,32 @@
 package com.example.booksapp1.entities;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-        import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-    @Table(name = "users")
-    public class User {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int user_id;
-        private  String username;
-        private  String phone_number;
-        private  int role_id;
-        private LocalDateTime created_at;
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "role_id", updatable = false, insertable = false)
-        @JsonIgnore
-        private Role roles;
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int user_id;
+    private String username;
+    private String phone_number;
+    private String roles;
+    private String password;
+    private LocalDateTime created_at;
+
     @OneToMany(mappedBy = "users")
     @JsonIgnore // ignore the property from serialization
     private List<Review> reviews = new ArrayList<Review>();
 
     @ManyToMany(mappedBy = "users")
     @JsonIgnore
-    Set <Book> books;
-
+    Set<Book> books;
 
     public int getUser_id() {
         return user_id;
@@ -54,12 +52,20 @@ import java.util.Set;
         this.phone_number = phone_number;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public String getRoles() {
+        return roles;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDateTime getCreated_at() {
@@ -68,14 +74,6 @@ import java.util.Set;
 
     public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
-    }
-
-    public Role getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Role roles) {
-        this.roles = roles;
     }
 
     public List<Review> getReviews() {

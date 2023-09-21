@@ -69,4 +69,14 @@ public class BooksServiceImp implements BooksService {
         return line;
 
     }
+    @Override
+    public Book updateFilePath(int book_id, String path) throws UserException {
+        Optional<Book> book1 = booksRepo.findById(book_id);
+        if (book1.isEmpty())
+            throw new UserException("book id not found");
+
+        Book books = book1.get();
+        books.setFilepath(path);
+        return booksRepo.save(books);
+    }
 }
