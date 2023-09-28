@@ -39,12 +39,12 @@ public class PublisherServiceImp implements PublisherService {
             throw new UserException("publisher id is not found");
 
         Publisher publishers = publishers1.get();
-        publishers.setPublisher_name(publisher_name);
+        publishers.setPublisherName(publisher_name);
         return publishersRepo.save(publishers);
     }
 
     @Override
-    public void rempovePublisher(int publisher_id) throws UserException {
+    public void removePublisher(int publisher_id) throws UserException {
         Optional<Publisher> publishers1 = publishersRepo.findById(publisher_id);
         if (publishers1.isEmpty())
             throw new UserException("user id is not found");

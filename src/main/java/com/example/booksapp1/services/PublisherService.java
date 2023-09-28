@@ -13,6 +13,6 @@ public interface PublisherService {
 
     Publisher updatePublisher(int publisher_id, String publisher_name ) throws UserException;
 
-    void rempovePublisher(int publisher_id) throws UserException;
+    void removePublisher(int publisher_id) throws UserException;
 }
 

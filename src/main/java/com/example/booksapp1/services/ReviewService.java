@@ -13,7 +13,7 @@ public interface ReviewService {
 
     Review updateReview(int review_id, String comment ) throws UserException;
 
-    void rempoveReview(int review_id) throws UserException;
+    void removeReview(int review_id) throws UserException;
 
 
 

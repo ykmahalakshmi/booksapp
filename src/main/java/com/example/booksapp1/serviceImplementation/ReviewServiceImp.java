@@ -44,7 +44,7 @@ public class ReviewServiceImp implements ReviewService {
     }
 
     @Override
-    public void rempoveReview(int review_id) throws UserException {
+    public void removeReview(int review_id) throws UserException {
         Optional<Review> reviews1 = reviewsRepo.findById(review_id);
         if (reviews1.isEmpty())
             throw new UserException("review id not found");

@@ -12,45 +12,49 @@ import java.util.List;
 public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int publisher_id;
-    private String publisher_name;
-    private String publisher_city;
+    @Column(name="publisher_id")
+    private int publisherId;
+    @Column(name="publisher_name")
+    private String publisherName;
+    @Column(name="publisher_city")
+    private String publisherCity;
 
-    private LocalDateTime created_at;
+    @Column(name="created_at")
+    private LocalDateTime createdAt;
     @OneToMany(mappedBy = "publishers")
     @JsonIgnore
     private List<Book> books = new ArrayList<Book>();
 
-    public int getPublisher_id() {
-        return publisher_id;
+    public int getPublisherId() {
+        return publisherId;
     }
 
-    public void setPublisher_id(int publisher_id) {
-        this.publisher_id = publisher_id;
+    public void setPublisherId(int publisherId) {
+        this.publisherId = publisherId;
     }
 
-    public String getPublisher_name() {
-        return publisher_name;
+    public String getPublisherName() {
+        return publisherName;
     }
 
-    public void setPublisher_name(String publisher_name) {
-        this.publisher_name = publisher_name;
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
     }
 
-    public String getPublisher_city() {
-        return publisher_city;
+    public String getPublisherCity() {
+        return publisherCity;
     }
 
-    public void setPublisher_city(String publisher_city) {
-        this.publisher_city = publisher_city;
+    public void setPublisherCity(String publisherCity) {
+        this.publisherCity = publisherCity;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
 

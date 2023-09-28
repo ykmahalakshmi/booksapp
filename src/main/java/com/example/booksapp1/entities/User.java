@@ -13,12 +13,18 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    @Column(name="user_id")
+    private int userId;
+
     private String username;
-    private String phone_number;
+    @Column(name="phone_number")
+    private String phoneNumber;
+
     private String roles;
+
     private String password;
-    private LocalDateTime created_at;
+    @Column(name="created_at")
+    private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "users")
     @JsonIgnore // ignore the property from serialization
@@ -28,12 +34,12 @@ public class User {
     @JsonIgnore
     Set<Book> books;
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -44,12 +50,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getRoles() {
@@ -68,12 +74,12 @@ public class User {
         this.password = password;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public List<Review> getReviews() {

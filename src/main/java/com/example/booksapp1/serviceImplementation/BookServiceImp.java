@@ -3,7 +3,7 @@ package com.example.booksapp1.serviceImplementation;
 import com.example.booksapp1.entities.Book;
 import com.example.booksapp1.exception.UserException;
 import com.example.booksapp1.repos.BookRepo;
-import com.example.booksapp1.services.BooksService;
+import com.example.booksapp1.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 @Service
-public class BooksServiceImp implements BooksService {
+public class BookServiceImp implements BookService {
 
 
     @Autowired
@@ -48,7 +48,7 @@ public class BooksServiceImp implements BooksService {
     }
 
     @Override
-    public void rempoveBook(int book_id) throws UserException {
+    public void removeBook(int book_id) throws UserException {
         Optional<Book> books1 = booksRepo.findById(book_id);
         if (books1.isEmpty())
             throw new UserException("book id is not found");
@@ -58,8 +58,8 @@ public class BooksServiceImp implements BooksService {
 
 
     @Override
-    public Stream<String> getbookdata(int bookid) throws IOException {
-        String s = booksRepo.getpath1(bookid);
+    public Stream<String> getBookData(int bookid) throws IOException {
+        String s = booksRepo.getPath(bookid);
         System.out.println(s);
         FileReader fr = new FileReader(s);
 

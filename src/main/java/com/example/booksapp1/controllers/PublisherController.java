@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class PublishersControllers {
+public class PublisherController {
 
     @Autowired
     private PublisherService publisherService;
@@ -40,7 +40,7 @@ public class PublishersControllers {
     @DeleteMapping("/publisher/{publisher-id}")
     @PreAuthorize("hasRole('ROLE_AUTHOR')")
     public void removepublisher(@PathVariable("publisher-id") int publisher_id) throws UserException {
-        publisherService.rempovePublisher(publisher_id);
+        publisherService.removePublisher(publisher_id);
     }
 }
 

@@ -9,56 +9,54 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-    @Table(name = "books")
-    public class Book {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int book_id;
-        private  int publisher_id;
-        private  int author_id;
-        private  String title;
-        private String filepath;
-        private LocalDateTime created_at;
-
-        @ManyToOne(fetch = FetchType.LAZY)
+@Table(name = "books")
+public class Book {
+    @ManyToMany
+    @JoinTable(name = "userbook", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JsonIgnore
+    Set<User> users;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
+    private int bookId;
+    @Column(name = "publisher_id")
+    private int publisherId;
+    @Column(name = "author_id")
+    private int authorId;
+    private String title;
+    private String filepath;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id", updatable = false, insertable = false)
     @JsonIgnore
     private Publisher publishers;
+    @OneToMany(mappedBy = "books")
+    @JsonIgnore
+    private List<Review> reviews = new ArrayList<Review>();
 
-        @OneToMany(mappedBy = "books")
-        @JsonIgnore
-       private List<Review> reviews=new ArrayList<Review>();
-
-    @ManyToMany
-    @JoinTable(
-            name = "userbook",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-   @JsonIgnore
-    Set<User> users;
-
-    public int getBook_id() {
-        return book_id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(int book_id) {
-        this.book_id = book_id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public int getPublisher_id() {
-        return publisher_id;
+    public int getPublisherId() {
+        return publisherId;
     }
 
-    public void setPublisher_id(int publisher_id) {
-        this.publisher_id = publisher_id;
+    public void setPublisherId(int publisherId) {
+        this.publisherId = publisherId;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public int getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     public String getTitle() {
@@ -77,12 +75,12 @@ import java.util.Set;
         this.filepath = filepath;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Publisher getPublishers() {

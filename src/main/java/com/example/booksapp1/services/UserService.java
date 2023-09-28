@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
-public interface UsersService {
+public interface UserService {
 
 
     List<User> getUsers() throws UserException;
@@ -14,12 +14,12 @@ public interface UsersService {
 
     User updateUser(int user_id, String username ) throws UserException;
 
-    void rempoveUser(int user_id) throws UserException;
+    void removeUser(int user_id) throws UserException;
 
     Page<User> getUserpage(int pagenum, int limit);
 
 
-    Page<User> getUserpagebysort(int pagenum, int limit,String username);
+    Page<User> getUserPageBySort(int pagenum, int limit, String username);
 
 }
 

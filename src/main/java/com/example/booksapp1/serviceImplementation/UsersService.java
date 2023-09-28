@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @Service
-    public class UserService implements UserDetailsService {
+    public class UsersService implements UserDetailsService {
 
         @Autowired
         private UserRepo userRepo;

@@ -8,13 +8,16 @@ import java.time.LocalDateTime;
     public class Review {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int review_id;
-        private  int book_id;
-        private  int  user_id;
+        @Column(name="review_id")
+        private int reviewId;
+        @Column(name="book_id")
+        private  int bookId;
+        @Column(name="user_id")
+        private  int userId;
         private  int rating;
         private String comment;
 
-        private LocalDateTime created_at;
+        private LocalDateTime createdAt;
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "book_id", updatable = false, insertable = false)
         @JsonIgnore
@@ -26,28 +29,28 @@ import java.time.LocalDateTime;
         private User users;
 
 
-        public int getReview_id() {
-            return review_id;
+        public int getReviewId() {
+            return reviewId;
         }
 
-        public void setReview_id(int review_id) {
-            this.review_id = review_id;
+        public void setReviewId(int reviewId) {
+            this.reviewId = reviewId;
         }
 
-        public int getBook_id() {
-            return book_id;
+        public int getBookId() {
+            return bookId;
         }
 
-        public void setBook_id(int book_id) {
-            this.book_id = book_id;
+        public void setBookId(int bookId) {
+            this.bookId = bookId;
         }
 
-        public int getUser_id() {
-            return user_id;
+        public int getUserId() {
+            return userId;
         }
 
-        public void setUser_id(int user_id) {
-            this.user_id = user_id;
+        public void setUserId(int userId) {
+            this.userId = userId;
         }
 
         public int getRating() {
@@ -66,12 +69,12 @@ import java.time.LocalDateTime;
             this.comment = comment;
         }
 
-        public LocalDateTime getCreated_at() {
-            return created_at;
+        public LocalDateTime getCreatedAt() {
+            return createdAt;
         }
 
-        public void setCreated_at(LocalDateTime created_at) {
-            this.created_at = created_at;
+        public void setCreatedAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
         }
 
         public Book getBooks() {
